@@ -12,6 +12,15 @@ import (
 )
 
 func main() {
+	rootCmd := rootCommand()
+
+	if err := rootCmd.Execute(); err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+}
+
+func rootCommand() *cobra.Command {
 	rootCmd := &cobra.Command{
 		Use:   "preffixer",
 		Short: "Quickly manipulate files content prefixes.",
@@ -24,10 +33,7 @@ func main() {
 	rootCmd.AddCommand(injectCommand())
 	rootCmd.AddCommand(removeCommand())
 
-	if err := rootCmd.Execute(); err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		os.Exit(1)
-	}
+	return rootCmd
 }
 
 type opts struct {
@@ -116,8 +122,8 @@ func removeCommand() *cobra.Command {
 }
 
 func injectCmd(options opts) error {
-	fmt.Println("Prefix ", options.prefix)
-	fmt.Println("Pattern ", options.pattern)
+	fmt.Println("Prefix: ", options.prefix)
+	fmt.Println("Pattern: ", options.pattern)
 
 	files, err := getFilePaths(options.rootPath, options.pattern)
 	if err != nil {
@@ -144,6 +150,9 @@ func injectCmd(options opts) error {
 }
 
 func removeCmd(options opts) error {
+	fmt.Println("Prefix: ", options.prefix)
+	fmt.Println("Pattern: ", options.pattern)
+
 	files, err := getFilePaths(options.rootPath, options.pattern)
 	if err != nil {
 		return err
