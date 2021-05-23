@@ -28,6 +28,13 @@ You can easily add build tag `e2e` to all your `.go` files in `e2e` directory:
 preffixer inject ./e2e --prefix="//+build e2e" --pattern "*.go" -e
 ```
 
+## Installation
+
+Install with `go get`:
+```bash
+GO111MODULE=off go get github.com/Szymongib/preffixer
+```
+
 ## Usage
 
 ```
