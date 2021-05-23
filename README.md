@@ -1,10 +1,10 @@
 # Prefix fixer
 
-Preffixer is a tool that allows you to quickly add and remove prefixes from file contents walking down the specified path.
+Preffixer is a simple tool that allows you to quickly add and remove prefixes from file contents walking down the specified path without `bash`ing your head against the keyboard.
 
-The prefix is not injected if file already starts with the provided prefix.
+The prefix is not injected if the file already starts with the provided prefix.
 
-This tool might be useful for manipulating Go build tags or adding boilerplate/licence notes to files in your project.
+This tool might be useful for manipulating Go build tags or adding boilerplate/license notes to files in your project.
 
 ## Example
 
